@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuisioner MBTI</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 700px; margin: 20px auto; padding: 20px; }
+        .question { margin-bottom: 15px; }
+        button { margin-top: 20px; padding: 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h2>Kuisioner MBTI</h2>
+    <form id="quizForm">
+        <div id="questionsContainer"></div>
+        <button type="button" onclick="calculateResult()">Lihat Hasil</button>
+    </form>
+    
+    <h3 id="result"></h3>
+    
+    <script>
+        let questions = [
+            { q: "Dalam suatu acara sosial, kamu lebih sering...", a: ["E|Berinteraksi dengan banyak orang, berbicara aktif.", "I|Berbicara dengan sedikit orang yang dikenal."] },
+            { q: "Ketika menghadapi masalah, kamu lebih cenderung...", a: ["S|Menggunakan pengalaman dan fakta yang ada.", "N|Mengandalkan intuisi dan ide-ide kreatif."] },
+            { q: "Saat mengambil keputusan, kamu lebih mempertimbangkan...", a: ["T|Logika dan objektivitas.", "F|Perasaan dan dampaknya terhadap orang lain."] },
+            { q: "Cara kamu mengatur hidup lebih ke arah...", a: ["J|Terencana dan terstruktur.", "P|Fleksibel dan spontan."] },
+        ];
+
+        for (let i = 5; i <= 50; i++) {
+            questions.push({ q: `Pertanyaan ${i}: Deskripsi tambahan di sini`, a: ["A|Pilihan A", "B|Pilihan B"] });
+        }
+
+        let container = document.getElementById("questionsContainer");
+        questions.forEach((item, index) => {
+            let div = document.createElement("div");
+            div.classList.add("question");
+            div.innerHTML = `<p>${index + 1}. ${item.q}</p>` + 
+                item.a.map(opt => {
+                    let [val, text] = opt.split("|");
+                    return `<input type="radio" name="q${index}" value="${val}"> ${text}<br>`;
+                }).join("");
+            container.appendChild(div);
+        });
+
+        function calculateResult() {
+            let answers = "";
+            questions.forEach((_, index) => {
+                let checked = document.querySelector(`input[name="q${index}"]:checked`);
+                if (checked) {
+                    answers += checked.value;
+                }
+            });
+            let resultText = answers.length >= 50 ? `Hasil MBTI Anda: ${answers}` : "Silakan jawab semua pertanyaan.";
+            document.getElementById("result").innerText = resultText;
+        }
+    </script>
+</body>
+</html>
