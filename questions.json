@@ -1,0 +1,7 @@
+[
+    {"question": "Kamu lebih nyaman berada di lingkungan sosial atau sendiri?", "option1": "Sosial", "option2": "Sendiri"},
+    {"question": "Kamu lebih suka merencanakan segalanya atau spontan?", "option1": "Merencanakan", "option2": "Spontan"},
+    {"question": "Apakah kamu lebih mengandalkan logika atau perasaan dalam mengambil keputusan?", "option1": "Logika", "option2": "Perasaan"},
+    {"question": "Kamu lebih suka berbicara langsung atau melalui teks?", "option1": "Langsung", "option2": "Teks"},
+    {"question": "Kamu lebih suka bekerja dalam tim atau sendiri?", "option1": "Tim", "option2": "Sendiri"}
+]
